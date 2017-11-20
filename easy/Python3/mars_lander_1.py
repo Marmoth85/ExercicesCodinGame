@@ -23,10 +23,10 @@ while True:
     # To debug: print("Debug messages...", file=sys.stderr)
     res = "0 "
     
-    if v_speed > 0 and power > 0:
-        power -= 1
-    elif v_speed < -40 and power < 4:
+    if v_speed <= -39.711 and power < 4:
         power += 1
+    if v_speed > -39.711 and power > 0:
+        power -= 1
     res = res + str(power)
     # 2 integers: rotate power. rotate is the desired rotation angle (should be 0 for level 1), power is the desired thrust power (0 to 4).
     print(res)
