@@ -17,8 +17,8 @@ int main()
     cin >> N; cin.ignore();
     
     double lonA = 0, latA = 0, lonB = 0, latB = 0;
-    lonA = stod(LON.replace(LON.find(","), 1, "."));
-    latA = stod(LAT.replace(LAT.find(","), 1, "."));
+    lonA = stod(LON.replace(LON.find(","), 1, ".")) * 3.14159 / 180;
+    latA = stod(LAT.replace(LAT.find(","), 1, ".")) * 3.14159 / 180;
     string name_result = "";
     double distance = pow(10, 10);
     double x, y, d;
@@ -32,8 +32,8 @@ int main()
         while (getline(ss, item, ';')) {
             inputs.push_back(item);
         }
-        lonB = stod(inputs[4].replace(inputs[4].find(","), 1, "."));
-        latB = stod(inputs[5].replace(inputs[5].find(","), 1, "."));
+        lonB = stod(inputs[4].replace(inputs[4].find(","), 1, ".")) * 3.14159 / 180;
+        latB = stod(inputs[5].replace(inputs[5].find(","), 1, ".")) * 3.14159 / 180;
         
         x = (lonB - lonA) * cos ((latA + latB) / 2);
         y = (latB - latA);
