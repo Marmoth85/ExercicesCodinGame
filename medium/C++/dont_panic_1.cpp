@@ -24,30 +24,26 @@ int main()
         cin >> elevatorFloor >> elevatorPos; cin.ignore();
         elevators[elevatorFloor] = elevatorPos;
     }
-    int latence = 0; // delay for blocking 0 for the first one, else one turn to have time to get the elevator
+    int latence = 0; // delay for blocking just after elevating
     while (1) {
         int cloneFloor; // floor of the leading clone
         int clonePos; // position of the leading clone on its floor
         string direction; // direction of the leading clone: LEFT or RIGHT
         cin >> cloneFloor >> clonePos >> direction; cin.ignore();
-        int target_position;
-        if (exitFloor > cloneFloor) {
-            target_position = elevators[cloneFloor];
-        } else {
-            target_position = exitPos;
-        }
-        int delta = 0;
         string action = "WAIT";
-        if (direction == "RIGHT") {
-            delta = 1;
-        } else {
-            delta = -1;
-        }
-        if (clonePos == 0 || clonePos == width - 1) {
-            action = "BLOCK";
-            latence = 1;
-        }
-        if (nbFloors > 1) {
+        if (cloneFloor != -1) {
+            int target_position;
+            if (exitFloor > cloneFloor) {
+                target_position = elevators[cloneFloor];
+            } else {
+                target_position = exitPos;
+            }
+            int delta = 0;
+            if (direction == "RIGHT") {
+                delta = 1;
+            } else {
+                delta = -1;
+            }
             if ((target_position - clonePos) * delta < 0 && latence == 0) {
                 action = "BLOCK";
                 latence = 1;
