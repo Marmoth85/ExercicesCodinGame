@@ -19,6 +19,7 @@ int calculate(int val_min, int val_max, int current_val) {
     }
 }
 
+
 int main()
 {
     int W; // width of the building.
